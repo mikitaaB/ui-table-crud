@@ -1,9 +1,9 @@
-name: Deploy to GitHub Pages
+name: Deploy Vite site to Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -45,8 +45,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          branch: gh-pages
-
-      - name: Get URL of the deployed site
-        run: echo "Deployed site is available at ${{ steps.deployment.outputs.page_url }}"
