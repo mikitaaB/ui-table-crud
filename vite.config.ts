@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react"
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
 	return {
-		base: mode === "production" ? "/ui-table-task/" : "/",
+		base: mode === "production" ? "/ui-table-crud/" : "/",
 		plugins: [react()],
 	};
 });
