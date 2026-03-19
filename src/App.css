@@ -1,0 +1,9 @@
+#root {
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+  color: #4f4f4f;
+  background-color: #FBFCFD;
+}
