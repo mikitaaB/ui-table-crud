@@ -1,7 +1,8 @@
 {
-  "name": "ui-table-task",
+  "name": "ui-table-crud",
   "private": true,
   "version": "0.0.1",
+  "homepage": "https://mikitaab.github.io/ui-table-crud",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -14,14 +14,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: 'yarn'
-      - run: yarn install --frozen-lockfile
-      - run: yarn build
-      - uses: actions/upload-pages-artifact@v4
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        run: yarn build
+
+      - name: Upload build artifact
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
 
@@ -31,6 +40,13 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          branch: gh-pages
+
+      - name: Get URL of the deployed site
+        run: echo "Deployed site is available at ${{ steps.deployment.outputs.page_url }}"
