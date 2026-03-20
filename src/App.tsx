@@ -1,14 +1,11 @@
-import { lazy, Suspense } from "react";
+import DataTable from "./components/DataTable";
 import "./App.css";
 
-const DataTable = lazy(() => import('./components/DataTable'));
 
 const App = () => {
 	return (
 		<div>
-			<Suspense fallback={null}>
-				<DataTable />
-			</Suspense>
+			<DataTable />
 		</div>
 	)
 }
