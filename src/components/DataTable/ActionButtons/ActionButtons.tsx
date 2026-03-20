@@ -1,4 +1,4 @@
-import { EditOutlined } from "@ant-design/icons";
+import EditOutlined from "@ant-design/icons/es/icons/EditOutlined";
 import Button from "antd/es/button/Button";
 import Space from "antd/es/space";
 import DeleteButton from "./DeleteButton";

@@ -4,7 +4,7 @@ import { useTableData } from "../../hooks/useTableData";
 import { useModal } from "../../hooks/useModal";
 import { createTableColumns } from "./tableColumns";
 import TableControls from "./TableControls";
-import styles from "./Table.module.css";
+import styles from "./DataTable.module.css";
 
 const EntryModal = lazy(() => import("./EntryModal"));
 

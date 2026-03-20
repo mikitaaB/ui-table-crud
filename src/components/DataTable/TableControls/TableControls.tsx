@@ -1,6 +1,6 @@
 import Space from "antd/es/space";
 import Button from "antd/es/button/Button";
-import { PlusOutlined } from "@ant-design/icons";
+import PlusOutlined from "@ant-design/icons/es/icons/PlusOutlined";
 import SearchField from "../../SearchField";
 
 interface TableControlsProps {

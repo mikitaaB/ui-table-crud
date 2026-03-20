@@ -1,4 +1,4 @@
-import { DeleteOutlined } from "@ant-design/icons";
+import DeleteOutlined from "@ant-design/icons/es/icons/DeleteOutlined";
 import Button from "antd/es/button/Button";
 import Popconfirm from "antd/es/popconfirm";
 
