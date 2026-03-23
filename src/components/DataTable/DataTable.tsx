@@ -20,7 +20,7 @@ const DataTable = () => {
 
     const {
         isModalVisible,
-        editingRecord,
+        isEditRecord,
         form,
         openAddModal,
         openEditModal,
@@ -63,7 +63,7 @@ const DataTable = () => {
                 {isModalVisible && (
                     <EntryModal
                         isVisible={isModalVisible}
-                        editingRecord={editingRecord}
+                        isEditRecord={isEditRecord}
                         form={form}
                         onOk={handleModalSubmit}
                         onCancel={closeModal}

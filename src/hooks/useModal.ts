@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Form from "antd/es/form";
 import dayjs from "dayjs";
 import type { DataType, FormValues } from "../types/entry";
 
 export const useModal = () => {
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [editingRecord, setEditingRecord] = useState<DataType | null>(null);
+	const [modalData, setModalData] = useState<DataType | null>(null);
 	const [form] = Form.useForm();
 
 	const openAddModal = () => {
-		setEditingRecord(null);
+		setModalData(null);
 		form.resetFields();
 		setIsModalVisible(true);
 	};
 
 	const openEditModal = (record: DataType) => {
-		setEditingRecord(record);
+		setModalData(record);
 		form.setFieldsValue({
 			name: record.name,
 			date: dayjs(record.date),
@@ -31,16 +31,14 @@ export const useModal = () => {
 
 	const handleModalOk = async (
 		onAdd: (values: FormValues) => void,
-		onUpdate: (record: DataType, values: FormValues) => void
+		onUpdate: (modalData: DataType, values: FormValues) => void
 	) => {
 		try {
 			const values = await form.validateFields();
 
-			if (editingRecord) {
-				onUpdate(editingRecord, values);
-			} else {
-				onAdd(values);
-			}
+			modalData === null
+				? onAdd(values)
+				: onUpdate(modalData, values);
 
 			closeModal();
 		} catch (error) {
@@ -48,9 +46,11 @@ export const useModal = () => {
 		}
 	};
 
+	const isEditRecord = useMemo(() => modalData !== null, [modalData]);
+
 	return {
 		isModalVisible,
-		editingRecord,
+		isEditRecord,
 		form,
 		openAddModal,
 		openEditModal,

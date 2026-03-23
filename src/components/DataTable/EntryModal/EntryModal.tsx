@@ -4,11 +4,10 @@ import Input from "antd/es/input/Input";
 import InputNumber from "antd/es/input-number";
 import Modal from "antd/es/modal/Modal";
 import type { FormInstance } from "antd/es/form";
-import type { DataType } from "../../../types/entry";
 
 interface EntryModalProps {
 	isVisible: boolean;
-	editingRecord: DataType | null;
+	isEditRecord: boolean;
 	form: FormInstance;
 	onOk: () => void;
 	onCancel: () => void;
@@ -16,14 +15,14 @@ interface EntryModalProps {
 
 const EntryModal = ({
 	isVisible,
-	editingRecord,
+	isEditRecord,
 	form,
 	onOk,
 	onCancel
 }: EntryModalProps) => {
 	return (
 		<Modal
-			title={editingRecord ? "Редактировать запись" : "Добавить запись"}
+			title={isEditRecord ? "Редактировать запись" : "Добавить запись"}
 			open={isVisible}
 			onOk={onOk}
 			onCancel={onCancel}

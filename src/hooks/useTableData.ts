@@ -1,24 +1,10 @@
 import { useState } from "react";
 import message from "antd/es/message";
+import { INIT_DATA } from "../constants/tableData";
 import type { DataType, FormValues } from "../types/entry";
 
-const initialData: DataType[] = [
-	{
-		key: "1",
-		name: "Иван Иванов",
-		date: "2024-01-15",
-		value: 1000
-	},
-	{
-		key: "2",
-		name: "Петр Петров",
-		date: "2024-02-20",
-		value: 2500
-	}
-];
-
 export const useTableData = () => {
-	const [data, setData] = useState<DataType[]>(initialData);
+	const [data, setData] = useState<DataType[]>(INIT_DATA || []);
 	const [searchText, setSearchText] = useState("");
 
 	const filteredData = data.filter(item =>
@@ -38,15 +24,15 @@ export const useTableData = () => {
 		message.success("Запись добавлена");
 	};
 
-	const updateRecord = (editingRecord: DataType, values: FormValues) => {
+	const updateRecord = (modalData: DataType, values: FormValues) => {
 		const updatedRecord: DataType = {
-			key: editingRecord.key,
+			key: modalData.key,
 			name: values.name,
 			date: values.date.format("YYYY-MM-DD"),
 			value: values.value
 		};
 		setData(prev => prev.map(item =>
-			item.key === editingRecord.key ? updatedRecord : item
+			item.key === modalData.key ? updatedRecord : item
 		));
 		message.success("Запись обновлена");
 	};
