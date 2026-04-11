@@ -4,10 +4,8 @@ import "./App.css";
 
 const App = () => {
 	return (
-		<div>
-			<DataTable />
-		</div>
-	)
+		<DataTable />
+	);
 }
 
 export default App
